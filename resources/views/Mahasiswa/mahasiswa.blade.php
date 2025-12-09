@@ -36,8 +36,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <h3 >Tabel Mahasiswa</h3>
+      <a href="/mahasiswa/create" class="btn btn-primary mb-3">Tambah Data Mahasiswa</a>
       <table class="table table-dark table-hover text-center table-bordered">
         <thead>
           <tr>
@@ -47,52 +48,12 @@
             <th>ALAMAT</th>
           </tr>
         </thead>
-        <tbody>
-          <?php $nilai_awal = 0; ?>
-          @while ($nilai_awal < $jumlah)
-          <tr>
-            <td>{{ $nim[$nilai_awal] }}</td>
-            <td>{{ $nama[$nilai_awal] }}</td>
-            <td>{{ $noHP[$nilai_awal] }}</td>
-            <td>{{ $alamat[$nilai_awal] }}</td>
-          </tr>
-          @php $nilai_awal++; @endphp
-          @endwhile
-        </tbody>
+        
       </table>
     </div>
 
-    <div class="col-sm-6">
-      <h3>Form Mahasiswa</h3>
-      <form action="" method="GET">
-        <div class="row">
-          <div class="col-sm-6 mb-3">
-            <label for="nim" class="form-label">NIM</label>
-            <input type="number" id="nim" name="nim" class="form-control" placeholder="Masukkan NIM">
-          </div>
-          <div class="col-sm-6 mb-3">
-            <label for="nama" class="form-label">Nama</label>
-            <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan Nama">
-          </div>
-          <div class="col-sm-6 mb-3">
-            <label for="tgl" class="form-label">Tanggal Lahir</label>
-            <input type="date" id="tgl" name="tgl" class="form-control">
-          </div>
-          <div class="col-sm-6 mb-3">
-            <label for="prodi" class="form-label">Program Studi</label>
-            <select id="prodi" name="prodi" class="form-control">
-              <option value="">Pilih Prodi</option>
-              <option value="si">Sistem Informasi</option>
-              <option value="komputer">Teknik Komputer</option>
-              <option value="ti">Teknik Informatika</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12"></div>
-          <button type="submit" class="btn btn-primary" style="widht:100%">Save</button>
-        </div>
-      </form>
+ 
+     
     </div>
   </div>
 </div>
