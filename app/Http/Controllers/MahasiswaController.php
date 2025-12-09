@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -11,6 +12,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
+        // nanti bisa kamu isi ambil data dari database
         return view('Mahasiswa.mahasiswa');
     }
 
@@ -27,7 +29,30 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // VALIDASI
+        $validated = $request->validate(
+            [
+                'npm'            => 'required|unique:mahasiswas,npm',
+                'nama_mahasiswa' => 'required',
+                'jenis_kelamin'  => 'required',
+                'tanggal_lahir'  => 'required|date',
+                'alamat'         => 'required',
+            ],
+            [
+                'npm.required'            => 'NPM wajib diisi',
+                'npm.unique'              => 'NPM sudah terdaftar',
+                'nama_mahasiswa.required' => 'Nama Mahasiswa wajib diisi',
+                'jenis_kelamin.required'  => 'Jenis Kelamin wajib diisi',
+                'tanggal_lahir.required'  => 'Tanggal Lahir wajib diisi',
+                'tanggal_lahir.date'      => 'Tanggal Lahir tidak valid',
+                'alamat.required'         => 'Alamat wajib diisi',
+            ]
+        );
+
+        // SIMPAN KE DB
+        Mahasiswa::create($validated);
+
+        return redirect('/mahasiswa')->with('success', 'Data Berhasil Disimpan');
     }
 
     /**

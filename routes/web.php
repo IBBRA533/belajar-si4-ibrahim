@@ -21,3 +21,5 @@ Route::get('/profil', function () {
 
 
 Route::resource('mahasiswa',MahasiswaController::class);
+Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
+Route::post('/mahasiswa', [MahasiswaController::class, 'store']);
